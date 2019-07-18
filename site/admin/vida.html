@@ -1,0 +1,216 @@
+<?
+include "include/db_connect.inc";
+?>
+
+<HTML>
+<LINK REL="stylesheet" HREF="include/admin_style.css"><META NAME="autor" CONTENT="Esteban Raffo Quintana, Hernan Pablo Principe, Hernan Javier Ramirez">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function openwin(theURL,winName,features) {
+  window.open(theURL,winName,features);
+} 
+
+function showImage (url, name, w, h) {	
+	var n3 = (navigator.appName.indexOf('Netscape')!=-1 && navigator.appVersion.indexOf('3.')!=-1)?true:false;
+	var ww = (n3)?(parseInt(w)+20):parseInt(w);
+	var wh = (n3)?(parseInt(h)+20):parseInt(h);
+	var winname = (name.indexOf(' ')!=-1)?name.substring(0, name.indexOf(' ')):name;
+	var wnd = window.open('', winname, 'width='+ww+',height='+(wh+0));
+	var code =  "<html><head>\n" +
+				"<title>" + name + "</title></head>\n" +
+				"<body bgcolor=#000000 text=#CCCCCC marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>\n" +
+				"<center><img src=\"" + url + "\"><br>\n" +
+				"</center></body></html>"
+	wnd.document.write(code);
+	wnd.document.close();
+}
+
+-->
+</SCRIPT>
+<BODY>
+
+<P>JSAVIOLA.COM -> Su Vida</P>
+
+
+
+
+<?
+	if (!isset($paso)){ $paso=1; }
+if ($borrar=="si"){
+?>
+<DIV ID="Layer2" STYLE="position:absolute; left:381px; top:122px; width:223px; height:145px; z-index:2; background-color: #006666; layer-background-color: #006666; border: 1px none #000000"> 
+  <P>&nbsp;</P>
+  <P ALIGN="CENTER">¿Esta seguro que desea eliminar este registro?<BR><BR>
+    <A HREF="<? echo $PHP_SELF ?>?borrar=aceptar&id=<? echo $id ?>&paso=<? echo $paso ?>"><FONT COLOR="#FF3333">ACEPTAR</FONT></A>&nbsp
+<A HREF="<? echo $PHP_SELF ?>?paso=<? echo $paso ?>"><FONT COLOR="#FF3333">CANCELAR</FONT></A></P>
+  </DIV>
+<?
+}
+if ($borrar=="aceptar"){
+mysql_query("DELETE FROM vida WHERE id = $id");
+}
+
+if ($enviar) {
+	$fecha_creacion = date ("Y-m-d"); 
+
+	if ($accion=="modificar"){
+
+				$sql="UPDATE vida SET titulo='$titulo', texto='$texto', id_foto1='$id_foto1', id_foto2='$id_foto2', id_foto3='$id_foto3' WHERE id='$id'";
+	}
+	if ($accion==agregar){
+		   $sql = "INSERT INTO vida (fecha_creacion, titulo, texto, id_foto1, id_foto2, id_foto3) ". "VALUES ('$fecha_creacion', '$titulo', '$texto', '$id_foto1', '$id_foto2', '$id_foto3')";
+		}
+   $result = mysql_query($sql);
+?>
+
+<DIV ID="Layer1" STYLE="position:absolute; left:381px; top:122px; width:223px; height:145px; z-index:1; background-color: #006666; layer-background-color: #006666; border: 1px none #000000"> 
+  <P>&nbsp;</P>
+  <P ALIGN="CENTER"> El registro de <B><? echo $titulo ?></B> 
+    ha sido correctamente ingresado/modificado en la base de datos.<BR><BR>
+    <A HREF="<? echo $PHP_SELF ?>?paso=<? echo $paso ?>"><FONT COLOR="#FF3333">ACEPTAR</FONT></A></P>
+  </DIV>
+
+<?		
+}
+	$result = mysql_query("SELECT * FROM vida");  
+	$total=mysql_num_rows($result);
+	
+?> 
+
+<P><A HREF="<? echo $PHP_SELF ?>?accion=agregar&paso=<? echo $paso ?>">Agregar 
+  Nuevo evento de SU VIDA</A></P>
+<P><FONT COLOR="#FF0000">Total eventos <? echo $total ?></FONT><BR>
+  <?
+
+	$rango=25;
+	$rango_i=($rango*$paso)-$rango;
+ 	$pasos=$total/$rango;
+	$x=1;
+	while ($x<=($pasos+1)){
+?>
+<A HREF="<? echo $PHP_SELF ?>?paso=<? echo $x ?>" <? if ($x==$paso){ echo "style='color:#FF0000'"; } ?>><? echo $x ?>&nbsp;</A>
+<?
+		$x++;
+	}
+?></P>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#000000"> 
+    <TD>
+      <TABLE BORDER="0" BORDERCOLOR="#000000" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
+        <TR BGCOLOR="#996666" ALIGN="CENTER"> 
+          <TD> <B>Modificar </B></TD>
+          <TD> <B>id</B> </TD>
+          <TD> <B>T&iacute;tulo</B></TD>
+          <TD> <B>Texto</B></TD>
+          <TD> <B>Fecha Creacion</B></TD>
+          <TD> <B>Foto1</B> </TD>
+          <TD> <B>Foto2</B> </TD>
+          <TD> <B>Foto3</B> </TD>
+          <TD> <B>Borrar </B></TD>
+        </TR>
+        <?
+	$result = mysql_query("SELECT * FROM vida ORDER BY id LIMIT $rango_i,$rango");  
+		if ($result != 0){ 
+			while ($row = mysql_fetch_object($result)){
+
+if ($accion=="modificar" && $row->id == $id){
+	if (!$enviar){
+		$result2 = mysql_query("SELECT * FROM vida WHERE id='$id'"); 
+		if ($result2 != 0){
+			while ($row2=mysql_fetch_object($result2)){
+?> 
+        <TR ALIGN="CENTER"> 
+          <FORM METHOD="POST" ACTION="<? echo $PHP_SELF ?>?accion=modificar&id=<? echo $id ?>&paso=<? echo $paso ?>">
+            <TD ALIGN="CENTER" BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Submit" NAME="enviar" VALUE="modificar">
+            </TD>
+            <TD BGCOLOR="#FF0000"><? echo $id ?></TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="titulo" VALUE="<? echo $row2->titulo ?>">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <TEXTAREA NAME="texto"><? echo $row2->texto ?></TEXTAREA>
+            </TD>
+            <TD BGCOLOR="#FF0000"> <? echo $fecha_creacion ?></TD>
+            <TD BGCOLOR="#FFFFFF"><A HREF="fotos.html" TARGET="_blank">
+              <INPUT TYPE="Text" NAME="id_foto1" VALUE="<? echo $row2->id_foto1 ?>">></A>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"><A HREF="fotos.html" TARGET="_blank"> 
+              <INPUT TYPE="Text" NAME="id_foto2" VALUE="<? echo $row2->id_foto2 ?>">></A>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"><A HREF="fotos.html" TARGET="_blank"> 
+              <INPUT TYPE="Text" NAME="id_foto3" VALUE="<? echo $row2->id_foto3 ?>">></A>
+            </TD>
+            <TD ALIGN="CENTER" BGCOLOR="#FF0000">&nbsp;</TD>
+          </FORM>
+        </TR>
+        <?
+			}
+		}
+	mysql_free_result($result2);
+	}
+}else{
+?> 
+        <TR BGCOLOR="#FFFFCC"> 
+          <TD ALIGN="CENTER"><A HREF="<? echo $PHP_SELF ?>?accion=modificar&id=<? echo $row->id ?>&paso=<? echo $paso ?>">Modificar</A></TD>
+          <TD><? echo $row->id ?></TD>
+          <TD><? echo $row->titulo ?></TD>
+          <TD><? echo $row->texto ?></TD>
+          <TD><? echo $row->fecha_creacion ?></TD>
+          <? $imas=mysql_query("SELECT nombre_arch, ancho, alto FROM fotos WHERE id='$row->id_foto1'");
+	$imasa=mysql_fetch_array($imas); ?> 
+          <TD><A HREF="javascript:showImage('../img/clipart/<? echo $imasa[0] ?>', 'imagen', '<? echo $imasa[1] ?>', '<? echo $imasa[2] ?>')"><? echo $imasa[0] ?></A></TD>
+          <? $imas=mysql_query("SELECT nombre_arch, ancho, alto FROM fotos WHERE id='$row->id_foto2'");
+	$imasa=mysql_fetch_array($imas); ?> 
+          <TD><A HREF="javascript:showImage('../img/clipart/<? echo $imasa[0] ?>', 'imagen', '<? echo $imasa[1] ?>', '<? echo $imasa[2] ?>')"><? echo $imasa[0] ?></A></TD>
+          <? $imas=mysql_query("SELECT nombre_arch, ancho, alto FROM fotos WHERE id='$row->id_foto3'");
+	$imasa=mysql_fetch_array($imas); ?> 
+          <TD><A HREF="javascript:showImage('../img/clipart/<? echo $imasa[0] ?>', 'imagen', '<? echo $imasa[1] ?>', '<? echo $imasa[2] ?>')"><? echo $imasa[0] ?></A></TD>
+          <TD ALIGN="CENTER"><A HREF="<? echo $PHP_SELF ?>?borrar=si&id=<? echo $row->id ?>&paso=<? echo $paso ?>">Borrar</A></TD>
+        </TR>
+        <?
+			}
+		}
+   }
+
+
+
+if ($accion=="agregar"){
+	if (!$enviar){
+?> 
+        <TR ALIGN="CENTER"> 
+          <FORM METHOD="POST" ACTION="<? echo $PHP_SELF ?>?accion=agregar&paso=<? echo $paso ?>">
+            <TD ALIGN="CENTER" BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Submit" NAME="enviar" VALUE="AGREGAR">
+            </TD>
+            <TD BGCOLOR="#FF0000"><? echo $id ?></TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="titulo" VALUE="">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="texto" VALUE="">
+            </TD>
+            <TD BGCOLOR="#FFFFFF">Fecha</TD>
+            <TD BGCOLOR="#FFFFFF"><A HREF="fotos.html" TARGET="_blank"> 
+              <INPUT TYPE="Text" NAME="id_foto1" VALUE="">></A>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"><A HREF="fotos.html" TARGET="_blank"> 
+              <INPUT TYPE="Text" NAME="id_foto2" VALUE="">></A>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"><A HREF="fotos.html" TARGET="_blank"> 
+              <INPUT TYPE="Text" NAME="id_foto3" VALUE="">></A>
+            </TD>
+            <TD ALIGN="CENTER" BGCOLOR="#FF0000">&nbsp;</TD>
+          </FORM>
+        </TR>
+        <?
+		}
+	}
+?> 
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+
+</BODY> 
+</HTML>

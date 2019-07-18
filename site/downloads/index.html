@@ -1,0 +1,81 @@
+<?
+include "../include/db_connect.inc"
+?>
+<HTML>
+<HEAD>
+<TITLE>Downloads</TITLE>
+<META NAME="autor" CONTENT="Esteban Raffo Quintana, Hernan Pablo Principe, Hernan Javier Ramirez">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" HREF="../include/estilos.css">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+
+
+
+function openwin(theURL,winName,features) {
+  window.open(theURL,winName,features);
+}
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY BGCOLOR="#000000" LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0" onLoad="">
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BACKGROUND="../img/general/personal/backheader.gif">
+  <TR> 
+    <TD>
+      <TABLE WIDTH="750" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+        <TR> 
+          <TD WIDTH="396"><IMG SRC="../img/general/personal/leftheader.jpg" WIDTH="396" HEIGHT="237"></TD>
+          <TD WIDTH="354" VALIGN="bottom"><OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ CODEBASE="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0"
+ ID=menu_downloads WIDTH=250 HEIGHT=123>
+              <PARAM NAME=movie VALUE="../flash/menu_downloads.swf"> <PARAM NAME=quality VALUE=high> <PARAM NAME=wmode VALUE=transparent>  <EMBED SRC="../flash/menu_downloads.swf" QUALITY=high WMODE=transparent  WIDTH=250 HEIGHT=123 TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></EMBED>
+</OBJECT></TD>
+        </TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#FFFFFF"> 
+    <TD> 
+      <P><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></P>
+      </TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#999999"> 
+    <TD> 
+      <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="400">
+        <TR> 
+          <TD WIDTH="75">&nbsp;</TD>
+          <TD WIDTH="325"><IMG SRC="../img/downloads_items/<? echo $inc ?>.gif"></TD>
+        </TR>
+      </TABLE>
+      
+    </TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#FFFFFF"> 
+    <TD> 
+      <P><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></P>
+    </TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="750" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="77" VALIGN="top"><IMG SRC="../img/general/personal/downleft.jpg" WIDTH="77" HEIGHT="148" VSPACE="0" HSPACE="0"></TD>
+    <TD WIDTH="673" VALIGN="top"> <BR><? include $inc.".inc" ?>
+    </TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="750" BORDER="0" CELLSPACING="2" CELLPADDING="2">
+  <TR ALIGN="right"> 
+    <TD><IMG SRC="../img/general/powered_by_s.gif" WIDTH="180" HEIGHT="28"></TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

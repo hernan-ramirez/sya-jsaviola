@@ -1,0 +1,134 @@
+<?
+include "../include/db_connect.inc"
+?>
+<HTML>
+<HEAD>
+<TITLE>E-Cards</TITLE>
+<META NAME="autor" CONTENT="Esteban Raffo Quintana, Hernan Pablo Principe, Hernan Javier Ramirez">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" HREF="../include/estilos.css">
+</HEAD>
+<BODY MARGINWIDTH="0" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" BGCOLOR="#000000" background="../img/general/back_ow.gif">
+<?
+function formulario($PHP_SELF, $nombre, $mailorigen, $maildestinatario, $destinatario, $card) {
+?> 
+<TABLE WIDTH="400" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR ALIGN="CENTER"> 
+    <TD bgcolor="#003333"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+  <TR ALIGN="CENTER"> 
+    <TD height="8"><a href="#mandar"><font color="#96BE81" face="Courier New, Courier, mono" size="2">MAND&aacute; 
+      eSTa E-caRD a uN AMIgo</font></a></TD>
+  </TR>
+  <TR ALIGN="CENTER"> 
+    <TD bgcolor="#000000"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+  <TR ALIGN="CENTER"> 
+    <TD>
+      <table width="400" border="1" cellspacing="1" cellpadding="1" bordercolorlight="#666666">
+        <tr> 
+          <td><font color="#FFFFFF"><a href="#mandar"><img src="../img/e_cards/<? echo $card ?>.jpg" width="400" height="320" border="0"></a></font></td>
+        </tr>
+      </table>
+      <FONT COLOR="#FFFFFF"></FONT></TD>
+  </TR>
+</TABLE>
+<BR>
+<TABLE WIDTH="400" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR ALIGN="center">
+<FORM METHOD="post" ACTION="<? echo $PHP_SELF ?>?card=<? echo $card ?>">
+      <TD><FONT COLOR="#FFFFFF"> <A NAME="mandar"></A>Por favor no dejes campos 
+        sin completa</FONT>r<BR>
+        <BR>
+        <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2">
+          <TR ALIGN="CENTER"> 
+            <TD> <FONT COLOR="#FFFFFF">Tu Nombre</FONT></TD>
+            <TD><FONT COLOR="#FFFFFF">Nombre del Destinatario</FONT> </TD>
+          </TR>
+          <TR ALIGN="CENTER"> 
+            <TD> 
+              <INPUT TYPE="text" NAME="nombre" VALUE="<? echo $nombre ?>" STYLE="width:170">
+            </TD>
+            <TD> 
+              <INPUT TYPE="text" NAME="destinatario" VALUE="<? echo $destinatario ?>" STYLE="width:170">
+            </TD>
+          </TR>
+          <TR ALIGN="CENTER"> 
+            <TD><FONT COLOR="#FFFFFF">Tu Mail</FONT></TD>
+            <TD><FONT COLOR="#FFFFFF">Mail del destinatario</FONT></TD>
+          </TR>
+          <TR ALIGN="CENTER"> 
+            <TD> 
+              <INPUT TYPE="text" NAME="mailorigen" VALUE="<? echo $mailorigen ?>" STYLE="width:170">
+            </TD>
+            <TD> 
+              <INPUT TYPE="text" NAME="maildestinatario" VALUE="<? echo $maildestinatario ?>" STYLE="width:170">
+            </TD>
+          </TR>
+        </TABLE>      
+        <BR>
+        <INPUT TYPE="submit" NAME="Submit" VALUE="Mandar">
+<INPUT TYPE="reset" NAME="Submit" VALUE="Borrar">
+</TD>
+</FORM>
+</TR>
+</TABLE>
+<?
+	}
+?> 
+<TABLE WIDTH="400" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR ALIGN="center">
+    <TD> <?
+if (!isset($nombre) && !isset($mailorigen) && !isset($maildestinatario) && !isset($destinatario)) {  
+formulario($PHP_SELF, $nombre, $mailorigen, $maildestinatario, $destinatario, $card);
+} else {
+if (empty($nombre) || empty ($mailorigen) || empty ($maildestinatario) || empty ($destinatario)) { 
+?> <B><FONT COLOR="#FFFFFF">Olvidaste completar un campo...</FONT></B> <?
+formulario($PHP_SELF, $nombre, $mailorigen, $maildestinatario, $destinatario, $card);
+} else {
+if (ereg("@", "$mailorigen") && ereg("\.", "$mailorigen") && ereg("@", "$maildestinatario") && ereg("\.", "$maildestinatario")) {
+
+
+include "../include/mime_mail.inc";
+
+$filename     = "../img/e_cards/".$card.".jpg";
+$content_type = "image/jpeg";
+
+# read a JPEG picture from the disk
+$fd = fopen($filename, "r");
+$data = fread($fd, filesize($filename));
+fclose($fd);
+
+# create object instance
+$mail = new mime_mail;
+
+# set all data slots
+$mail->from    = "$mailorigen";
+$mail->to      = "$maildestinatario";
+$mail->subject = "$nombre te manda una e-card de jsaviola.com";
+$mail->body    = "$destinatario: $nombre te manda una e-card de www.jsaviola.com , el Sitio Oficial de Javier Saviola.";
+
+# append the attachment
+$mail->add_attachment($data, $filename, $content_type);
+
+# send e-mail
+$mail->send();
+
+
+
+?> <FONT COLOR="#FFFFFF">Gracias por utilizar las E-Cards de <FONT COLOR="#FF9933"><B>jsaviola.com</B></FONT><BR>
+      <BR>
+      El mail fue enviado correctamente a la direcci&oacute;n <? echo $maildestinatario ?>. 
+      <?
+} else {  
+?> La direcci&oacute;n de mail no es v&aacute;lida... <?
+formulario($PHP_SELF, $nombre, $mailorigen, $maildestinatario, $destinatario, $card);
+    }
+  }
+} 
+?> </FONT></TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>
+

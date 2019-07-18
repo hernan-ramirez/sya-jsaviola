@@ -1,0 +1,76 @@
+<?
+include "../include/db_connect.inc";
+	$torneo1 = mysql_query("SELECT * FROM partidos_campeonato where id='$id'"); 
+$torneo = mysql_fetch_array($torneo1);
+?>
+<HTML>
+<HEAD>
+<TITLE>Estadísticas <? echo $torneo[campeonato] ?></TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" HREF="../include/estilos.css">
+<STYLE TYPE="text/css">
+<!--
+td {  font-family: "Ms Sans Serif"; font-size: 9pt}
+body {  font-family: "Ms Sans Serif"; font-size: 9pt; font-weight: bold}
+-->
+</STYLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" LEFTMARGIN="1" TOPMARGIN="1" MARGINWIDTH="1" MARGINHEIGHT="1">
+<DIV ALIGN="center"><B><FONT COLOR="#FFFFFF">Todos los Partidos del <? echo $torneo[campeonato] ?></FONT></B><BR>
+  <BR>
+</DIV>
+<TABLE WIDTH="480" BORDER="0" ALIGN="center" CELLPADDING="1" CELLSPACING="1">
+  <TR BGCOLOR="#999999"> 
+    <TD COLSPAN="2">
+      <P><!-- Inicio Tabla Goles-->
+      <TABLE WIDTH="480" BORDER="0" CELLPADDING="1" CELLSPACING="1">
+        <TR BGCOLOR="#000000"> 
+          <TD WIDTH="60"> 
+            <DIV ALIGN="center"><B>Fecha</B></DIV>
+          </TD>
+          <TD> 
+            <DIV ALIGN="center"><B>Equipo</B></DIV>
+          </TD>
+          <TD> 
+            <DIV ALIGN="center"><B>L/V</B></DIV>
+          </TD>
+          <TD> 
+            <DIV ALIGN="center"><B>Rival</B></DIV>
+          </TD>
+          <TD> 
+            <DIV ALIGN="center"><B>Res.</B></DIV>
+          </TD>
+          <TD> 
+            <DIV ALIGN="center"><B>Goles</B></DIV>
+          </TD>
+        </TR>
+        <?
+	$result = mysql_query("SELECT * FROM partidos where campeonato='$torneo[campeonato]' ORDER By fecha_partido"); 
+		if ($result != 0){ 
+			while ($row = mysql_fetch_object($result)){
+?> 
+        <TR BGCOLOR="#666666"> 
+          <TD WIDTH="60"><? echo $row->fecha_partido ?></TD>
+          <TD><? echo $row->equipo ?></TD>
+          <TD ALIGN="center"><? echo $row->local ?></TD>
+          <TD><? echo $row->rival ?></TD>
+          <TD ALIGN="center"><? echo $row->resultado ?></TD>
+          <TD ALIGN="center"><? echo $row->goles ?> <? 
+$archi= mysql_query("SELECT * FROM multimedia where id=$row->audio");
+$archivo= mysql_fetch_array($archi);
+if ($row->audio==0){
+?> <IMG SRC="../img/general/spacer.gif" WIDTH="16" HEIGHT="16" BORDER="0"> <? }else{ ?> 
+            <A HREF="../multimedia/ram/<? echo $archivo[nombre_arch] ?>"><IMG SRC="../img/general/audio.gif" WIDTH="16" HEIGHT="16" BORDER="0"></A> 
+            <? } ?> </TD>
+        </TR>
+        <?
+	}
+}
+?> 
+      </TABLE>
+      <!-- Fin Tabla de Goles--> </TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

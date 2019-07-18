@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+<TITLE>Estadisticas de Registardos</TITLE>
+<META NAME="autor" CONTENT="Esteban Raffo Quintana, Hernan Pablo Principe, Hernan Javier Ramirez">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" HREF="include/admin_style.css">
+</HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function printpag() {
+  if (window.print)
+    window.print()
+  else
+    alert("Su navegador no soporta esta funcion");
+}
+
+// -->
+</SCRIPT>
+<BODY BGCOLOR="#FFFFFF">
+<?
+include "include/db_connect.inc";
+$fecha = date ("d-m-Y");
+$hora = date ("H:i");
+?> Estadisticas de Registrados en <B>Jsaviola.com</B><BR>
+Informe a la fecha: <B><? echo $fecha ?> </B>Hora:<B> <? echo $hora ?></B><BR>
+  <BR>
+<?
+$tot=mysql_query("SELECT * FROM registrate  ORDER BY fecha_creacion");
+$total=mysql_num_rows($tot);
+?> Total de registrados:<B> <? echo $total ?> </B><BR>
+  <BR>
+  Por dia:<BR>
+<?
+while($row=mysql_fetch_object($tot)){	
+	if($dia!=$row->fecha_creacion){
+		$dia=$row->fecha_creacion;
+		$totdia=mysql_query("SELECT * FROM registrate WHERE fecha_creacion='$dia'");
+		$totaldia=mysql_num_rows($totdia);
+?> -<? echo $dia ?>:<B> <? echo $totaldia ?> </B><BR>
+<?
+	}
+}
+?>
+  <BR>
+Por sexo: <?
+$totfem=mysql_query("SELECT * FROM registrate WHERE sexo='F'");
+$totalfem=mysql_num_rows($totfem);
+$totmas=mysql_query("SELECT * FROM registrate WHERE sexo='M'");
+$totalmas=mysql_num_rows($totmas);
+?> -Femenino:<B> <? echo $totalfem ?></B> -Masculino:<B> <? echo $totalmas ?> 
+</B><BR>
+  <BR>
+Por Pa&iacute;s: <?
+$totarg=mysql_query("SELECT * FROM registrate WHERE domicilio_pais ='argentina'");
+$totalarg=mysql_num_rows($totarg);
+$extran=$total-$totalarg;
+?>-Argentinos:<B> <? echo $totalarg ?></B> -Extranjeros:<B> <? echo $extran ?></B><BR>
+  <BR>
+<?
+$tot20=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%198%'");
+$total20=mysql_num_rows($tot20);
+$tot20f=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%198%' and sexo='F'");
+$total20f=mysql_num_rows($tot20f);
+$tot20m=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%198%' and sexo='M'");
+$total20m=mysql_num_rows($tot20m);
+?>-Menores de 20 a&ntilde;os:<B> <? echo $total20 ?></B> (Hombres: <B><? echo $total20m ?></B> 
+/ Mujeres: <B><? echo $total20f ?></B>)<BR>
+<?
+$tot2030=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%197%'");
+$total2030=mysql_num_rows($tot2030);
+$tot2030f=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%197%' and sexo='F'");
+$total2030f=mysql_num_rows($tot2030f);
+$tot2030m=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%197%' and sexo='M'");
+$total2030m=mysql_num_rows($tot2030m);
+?>-Entre 20 y 30 a&ntilde;os:<B> <? echo $total2030 ?></B> (Hombres: <B><? echo $total2030m ?></B> 
+/ Mujeres: <B><? echo $total2030f ?></B>)<BR>
+<?
+$tot30=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%196%'");
+$total30=mysql_num_rows($tot30);
+$tot30f=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%196%' and sexo='F'");
+$total30f=mysql_num_rows($tot30f);
+$tot30m=mysql_query("SELECT * FROM registrate WHERE fecha_nacimiento LIKE '%196%' and sexo='M'");
+$total30m=mysql_num_rows($tot30m);
+?>-Mayores de 30 a&ntilde;os:<B> <? echo $total30 ?></B> (Hombres: <B><? echo $total30m ?></B> 
+/ Mujeres: <B><? echo $total30f ?></B>)<BR>
+<BR>
+<?
+$totriver=mysql_query("SELECT * FROM registrate WHERE hincha_de LIKE '%iver%'");
+$totalriver=mysql_num_rows($totriver);
+$otros=$total-$totalriver;
+?>-Hinchas de River:<B> <? echo $totalriver ?></B> Otros:<B> <? echo $otros ?></B><BR>
+<BR>
+<?
+$toticq=mysql_query("SELECT * FROM registrate WHERE icq > 0 ");
+$totalicq=mysql_num_rows($toticq);
+?>-Tienen ICQ:<B> <? echo $totalicq ?></B><BR>
+<BR>
+  -Lugar de Conexion:<BR>
+<?
+$tot=mysql_query("SELECT * FROM registrate ORDER BY lugar_conexion");
+while($row=mysql_fetch_object($tot)){	
+	if($tipo!=$row->lugar_conexion  ){
+		$tipo=$row->lugar_conexion ;
+		$totocupacion=mysql_query("SELECT * FROM registrate WHERE lugar_conexion ='$tipo'");
+		$totalocupacion=mysql_num_rows($totocupacion);
+?>&nbsp;&nbsp;&nbsp;-<? echo $tipo ?>:<B> <? echo $totalocupacion ?></B> <BR>
+<?
+	}
+}
+?><BR>
+<BR>
+  -Hora Conexion:<BR>
+<?
+$tot=mysql_query("SELECT * FROM registrate ORDER BY horario_conexion");
+while($row=mysql_fetch_object($tot)){	
+	if($tipo!=$row->horario_conexion  ){
+		$tipo=$row->horario_conexion ;
+		$totocupacion=mysql_query("SELECT * FROM registrate WHERE horario_conexion ='$tipo'");
+		$totalocupacion=mysql_num_rows($totocupacion);
+?>&nbsp;&nbsp;&nbsp;-<? echo $tipo ?>: <B><? echo $totalocupacion ?></B> <BR>
+<?
+	}
+}
+?><BR>
+<BR>
+  -Ocupaciones: <BR>
+<?
+$tot=mysql_query("SELECT * FROM registrate ORDER BY ocupacion");
+while($row=mysql_fetch_object($tot)){	
+	if($tipo!=$row->ocupacion ){
+		$tipo=$row->ocupacion;
+		$totocupacion=mysql_query("SELECT * FROM registrate WHERE ocupacion='$tipo'");
+		$totalocupacion=mysql_num_rows($totocupacion);
+?>&nbsp;&nbsp;&nbsp;-<? echo $tipo ?>:<B> <? echo $totalocupacion ?></B> <BR>
+<?
+	}
+}
+?><BR>
+  <BR>
+<?
+$totya=mysql_query("SELECT * FROM registrate WHERE noticias_jsaviola ='si'");
+$totalya=mysql_num_rows($totya);
+?>-Queren recibir noticias de Jsaviola:<B> <? echo $totalya ?></B><BR>
+<?
+$totya=mysql_query("SELECT * FROM registrate WHERE noticias_sya ='si'");
+$totalya=mysql_num_rows($totya);
+?>-Queren recibir noticias de Sportsya: <B><? echo $totalya ?></B><BR>
+<?
+$totya=mysql_query("SELECT * FROM registrate WHERE noticias_terceros  ='si'");
+$totalya=mysql_num_rows($totya);
+?>-Queren recibir noticias de Terceros: <B><? echo $totalya ?></B><BR>
+  <BR>
+<?
+$totya=mysql_query("SELECT * FROM registrate WHERE compras ='si'");
+$totalya=mysql_num_rows($totya);
+?>-Acostumbra a hacer compras por internet: <B><? echo $totalya ?></B><BR>
+<?
+$totya=mysql_query("SELECT * FROM registrate WHERE credito ='si'");
+$totalya=mysql_num_rows($totya);
+?>-Posee tarjeta de crédito: <B><? echo $totalya ?></B><BR>
+<?
+$totya=mysql_query("SELECT * FROM registrate WHERE encuesta ='si'");
+$totalya=mysql_num_rows($totya);
+?>-Está de acuerdo a responder encuestas por internet: <B><? echo $totalya ?></B><BR>
+<BR>
+<A HREF="#" onClick="javascript:printpag()">IMPRIMIR </A><BR>
+  <BR>
+</BODY>
+</HTML>

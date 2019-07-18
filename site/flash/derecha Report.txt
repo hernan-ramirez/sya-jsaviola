@@ -1,0 +1,59 @@
+Movie Report
+------------
+
+Frame #    Frame Bytes    Total Bytes    Page
+-------    -----------    -----------    ---------------
+    1         21434          21434        Escena 1
+    2          2769          24203          2
+    3          3173          27376          3
+    4          3132          30508          4
+    5          3158          33666          5
+
+Page                       Shape Bytes    Text Bytes
+-----------------------    -----------    ----------
+Escena 1                        271           580
+
+Embedded Objects                177             0
+
+Symbol                     Shape Bytes    Text Bytes
+-----------------------    -----------    ----------
+reg_aho!                         37           712
+reg_op                            0             0
+superior_btn                     44             0
+roll_over_2                     171             0
+superior                        351             0
+sabiolens_clip                    0             0
+ticket en lineas                 89             0
+sombra_ecard                     42             0
+e_ico_btn                         0             0
+e_ico_felicidades                 0             0
+e_ico_firma                       0             0
+e_ico_festejemos                  0             0
+e_ico_otroidolo                   0             0
+e_ico_paravos                    44             0
+transfo_e_icon                    0             0
+transfo_e_icon_felicidades        0             0
+transfo_e_icon_otroidolo          0             0
+transfo_e_icon_firma              0             0
+transfo_e_icon_festejemos         0             0
+transfo_e_icon_paravos            0             0
+flecha                          142             0
+e_card_ico copia copia          129             0
+e_card_ico_felicidades          166             0
+e_card_ico_festejemos           166             0
+e_card_ico_otroidolo            166             0
+e_card_ico_firma                166             0
+e_card_ico_paravos              166             0
+parche_blanco                     0             0
+alentá                            0            59
+registrate 2                      0            55
+sumate                            0            66
+
+Bitmap                     Compressed  Original    Compression
+-----------------------    ----------  ----------  ------------
+paravos_e                       2165       17296   Imported JPEGotroidolo_e                     2214       17296   Imported JPEGfestejemos_e                    2220       17296   Imported JPEGfelicidades_e                   1745       17296   Imported JPEGfirma_e                         1841       17296   Imported JPEGs_flash3                        1741       24304   Imported JPEGs_flash2                        1756       24304   Imported JPEGs_flash1                        1608       24304   Imported JPEG
+Font Name                  Bytes       Characters
+-----------------------    --------    -----------
+OCR-B-10 BT                   809         aeghiorst
+Orator15 BT                  1196         !ACDEGHIJLMNORSTU¡Á
+OCR-A BT                     3438         -CDEFIMRSTacdefgijlmnopqrstuvy

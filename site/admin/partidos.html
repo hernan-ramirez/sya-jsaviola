@@ -1,0 +1,276 @@
+<?
+include "include/db_connect.inc";
+?>
+<HTML>
+<LINK REL="stylesheet" HREF="include/admin_style.css"><META NAME="autor" CONTENT="Esteban Raffo Quintana, Hernan Pablo Principe, Hernan Javier Ramirez">
+<BODY>
+<P>JSAVIOLA.COM -> Partidos -&gt; <A HREF="campeonato.html" TARGET="_blank">Campeonatos</A> 
+  &brvbar; <A HREF="equipos.html" TARGET="_blank">Equipos</A></P>
+<?
+	if (!isset($paso)){ $paso=1; }
+if ($borrar=="si"){
+?> 
+<DIV ID="Layer2" STYLE="position:absolute; left:381px; top:122px; width:223px; height:145px; z-index:2; background-color: #006666; layer-background-color: #006666; border: 1px none #000000"> 
+  <P>&nbsp;</P>
+  <P ALIGN="CENTER">¿Esta seguro que decea eliminar este registro?<BR>
+    <BR>
+    <A HREF="<? echo $PHP_SELF ?>?borrar=aceptar&id=<? echo $id ?>&paso=<? echo $paso ?>"><FONT COLOR="#FF3333">ACEPTAR</FONT></A>&nbsp 
+    <A HREF="<? echo $PHP_SELF ?>?paso=<? echo $paso ?>"><FONT COLOR="#FF3333">CANCELAR</FONT></A></P>
+</DIV>
+<?
+}
+if ($borrar=="aceptar"){
+mysql_query("DELETE FROM partidos WHERE id = $id");
+}
+
+if ($enviar) {
+	$fecha_creacion = date ("Y-m-d"); 
+	if ($accion=="modificar"){
+			$sql="UPDATE partidos SET campeonato='$campeonato', equipo='$equipo', local='$local', rival='$rival', fecha_partido='$fecha_partido', resultado='$resultado', goles='$goles', audio='$audio' WHERE id='$id'";
+		}
+	if ($accion==agregar){
+		   $sql = "INSERT INTO partidos (fecha_creacion, campeonato, equipo, local, rival, fecha_partido, resultado, goles, audio) ". "VALUES ('$fecha_creacion', '$campeonato', '$equipo', '$local', '$rival', '$fecha_partido', '$resultado', '$goles', '$audio')";
+		}
+   $result = mysql_query($sql);
+?> 
+<DIV ID="Layer1" STYLE="position:absolute; left:381px; top:122px; width:223px; height:145px; z-index:1; background-color: #006666; layer-background-color: #006666; border: 1px none #000000"> 
+  <P>&nbsp;</P>
+  <P ALIGN="CENTER"> El registro de <B><? echo $equipo ?>&nbsp;vs&nbsp;<? echo $rival ?></B> 
+    ha sido correctamente ingresado/modificado en la base de datos.<BR>
+    <BR>
+    <A HREF="<? echo $PHP_SELF ?>?paso=<? echo $paso ?>"><FONT COLOR="#FF3333">ACEPTAR</FONT></A></P>
+</DIV>
+<?		
+}
+	$result = mysql_query("SELECT * FROM partidos");  
+	$total=mysql_num_rows($result);
+	
+?> 
+<P><A HREF="<? echo $PHP_SELF ?>?accion=agregar&paso=<? echo $paso ?>">Agregar 
+  Nuevo Partido</A></P>
+<P><FONT COLOR="#FF0000">Total Partidos <? echo $total ?></FONT><BR>
+  <?
+
+	$rango=25;
+	$rango_i=($rango*$paso)-$rango;
+ 	$pasos=$total/$rango;
+	$x=1;
+	while ($x<=($pasos+1)){
+?> <A HREF="<? echo $PHP_SELF ?>?paso=<? echo $x ?>" <? if ($x==$paso){ echo "style='color:#FF0000'"; } ?>><? echo $x ?>&nbsp;</A> 
+  <?
+		$x++;
+	}
+?></P>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#000000"> 
+    <TD> 
+      <TABLE BORDER="0" BORDERCOLOR="#000000" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
+        <TR BGCOLOR="#996666" ALIGN="CENTER"> 
+          <TD> <B>Modificar </B></TD>
+          <TD> <B>id</B> </TD>
+          <TD> <B>Campeonato</B> </TD>
+          <TD> <B>Equipo</B> </TD>
+          <TD> <B>L/V</B> </TD>
+          <TD> <B>Rival</B></TD>
+          <TD> <B>Fecha Partido</B></TD>
+          <TD> <B>Resultado</B></TD>
+          <TD> <B>Goles</B></TD>
+          <TD> <B>Audio</B></TD>
+          <TD> <B>Fecha Creacion</B></TD>
+          <TD> <B>Borrar </B></TD>
+        </TR>
+        <?
+	$result4 = mysql_query("SELECT * FROM partidos ORDER BY fecha_partido LIMIT $rango_i,$rango");  
+		if ($result4 != 0){ 
+			while ($row4 = mysql_fetch_object($result4)){
+
+if ($accion=="modificar" && $row4->id == $id){
+	if (!$enviar){
+		$result2 = mysql_query("SELECT * FROM partidos WHERE id='$id'"); 
+		if ($result2 != 0){
+			while ($row2=mysql_fetch_object($result2)){
+?> 
+        <TR ALIGN="CENTER"> 
+          <FORM METHOD="POST" ACTION="<? echo $PHP_SELF ?>?accion=modificar&id=<? echo $id ?>&paso=<? echo $paso ?>">
+            <TD ALIGN="CENTER" BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Submit" NAME="enviar" VALUE="MODIFICAR">
+            </TD>
+            <TD BGCOLOR="#FF0000"><? echo $id ?></TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <SELECT NAME="campeonato"  >
+                <OPTION VALUE="...">...</OPTION>
+                <?
+			$result = mysql_query("SELECT * FROM partidos_campeonato");
+			if ($result !=0) {
+			while ($row=mysql_fetch_object($result)){
+?> 
+                <OPTION VALUE="<? echo $row->campeonato ?>" <? if ($row->campeonato==$row4->campeonato){ echo "selected"; } ?> ><? echo $row->campeonato ?></OPTION>
+                <?
+	}
+}
+?> 
+              </SELECT>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <SELECT NAME="equipo">
+                <OPTION VALUE="...">...</OPTION>
+                <?
+			$result = mysql_query("SELECT * FROM partidos_equipos WHERE jugo='si' ORDER BY equipo");
+			if ($result !=0) {
+			while ($row=mysql_fetch_object($result)){
+?> 
+                <OPTION VALUE="<? echo $row->equipo ?>" <? if ($row->equipo==$row4->equipo){ echo "selected"; } ?> ><? echo $row->equipo ?></OPTION>
+                <?
+	}
+}
+?> 
+              </SELECT>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="local" VALUE="<? echo $row2->local ?>">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <SELECT NAME="rival">
+                <OPTION VALUE="...">...</OPTION>
+                <?
+			$result = mysql_query("SELECT * FROM partidos_equipos ORDER BY equipo");
+			if ($result !=0) {
+			while ($row=mysql_fetch_object($result)){
+?> 
+                <OPTION VALUE="<? echo $row->equipo ?>" <? if ($row->equipo==$row4->rival){ echo "selected"; } ?> ><? echo $row->equipo ?></OPTION>
+                <?
+	}
+}
+?> 
+              </SELECT>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="fecha_partido" VALUE="<? echo $row2->fecha_partido ?>">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="resultado" VALUE="<? echo $row2->resultado ?>">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="goles" VALUE="<? echo $row2->goles?>">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="audio" VALUE="<? echo $row2->audio?>">
+            </TD>
+            <TD ALIGN="CENTER" BGCOLOR="#FF9900"><? echo $row2->fecha_creacion ?></TD>
+            <TD BGCOLOR="#FF0000">&nbsp;</TD>
+          </FORM>
+        </TR>
+        <?
+			}
+		}
+	mysql_free_result($result2);
+	}
+}else{
+?> 
+        <TR BGCOLOR="#FFFFCC"> 
+          <TD ALIGN="CENTER"><A HREF="<? echo $PHP_SELF ?>?accion=modificar&id=<? echo $row4->id ?>&paso=<? echo $paso ?>">Modificar</A></TD>
+          <TD><? echo $row4->id ?></TD>
+          <TD><? echo $row4->campeonato ?></TD>
+          <TD><? echo $row4->equipo ?></TD>
+          <TD><? echo $row4->local ?></TD>
+          <TD><? echo $row4->rival ?></TD>
+          <TD><? echo $row4->fecha_partido ?></TD>
+          <TD><? echo $row4->resultado ?> </TD>
+          <TD><? echo $row4->goles ?></TD>
+          <TD><? echo $row4->audio ?></TD>
+          <TD ALIGN="CENTER"><? echo $row4->fecha_creacion ?></TD>
+          <TD ALIGN="CENTER"><A HREF="<? echo $PHP_SELF ?>?borrar=si&id=<? echo $row4->id ?>&paso=<? echo $paso ?>">Borrar</A></TD>
+        </TR>
+        <?
+			}
+		}
+   }
+
+
+
+if ($accion==agregar){
+	if (!$enviar){
+?> 
+        <TR ALIGN="CENTER"> 
+          <FORM METHOD="POST" ACTION="<? echo $PHP_SELF ?>?accion=agregar&paso=<? echo $paso ?>">
+            <TD ALIGN="CENTER" BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Submit" NAME="enviar" VALUE="AGREGAR">
+            </TD>
+            <TD BGCOLOR="#FF0000"><? echo $id ?></TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <SELECT NAME="campeonato"  >
+                <OPTION VALUE="...">...</OPTION>
+                <?
+			$result = mysql_query("SELECT * FROM partidos_campeonato");
+			if ($result !=0) {
+			while ($row=mysql_fetch_object($result)){
+?> 
+                <OPTION VALUE="<? echo $row->campeonato ?>" <? if ($campeonato==$row->id){ echo "selected"; } ?> ><? echo $row->campeonato ?></OPTION>
+                <?
+	}
+}
+?> 
+              </SELECT>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <SELECT NAME="equipo"  >
+                <OPTION VALUE="...">...</OPTION>
+                <?
+			$result = mysql_query("SELECT * FROM partidos_equipos WHERE jugo='si' ORDER BY equipo");
+			if ($result !=0) {
+			while ($row=mysql_fetch_object($result)){
+?> 
+                <OPTION VALUE="<? echo $row->equipo ?>" <? if ($equipo==$row->equipo){ echo "selected"; } ?> ><? echo $row->equipo ?></OPTION>
+                <?
+	}
+}
+?> 
+              </SELECT>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <SELECT NAME="local">
+                <OPTION VALUE="L" selected>L</OPTION>
+                <OPTION VALUE="V">V</OPTION>
+              </SELECT>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <SELECT NAME="rival"  >
+                <OPTION VALUE="...">...</OPTION>
+                <?
+			$result = mysql_query("SELECT * FROM partidos_equipos ORDER BY equipo");
+			if ($result !=0) {
+			while ($row=mysql_fetch_object($result)){
+?> 
+                <OPTION VALUE="<? echo $row->equipo ?>" <? if ($equipo==$row->equipo){ echo "selected"; } ?> ><? echo $row->equipo ?></OPTION>
+                <?
+	}
+}
+?> 
+              </SELECT>
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="fecha_partido">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="resultado">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="goles">
+            </TD>
+            <TD BGCOLOR="#FFFFFF"> 
+              <INPUT TYPE="Text" NAME="audio">
+            </TD>
+            <TD ALIGN="CENTER" BGCOLOR="#FF0000">&nbsp;</TD>
+            <TD BGCOLOR="#FF0000">&nbsp;</TD>
+          </FORM>
+        </TR>
+        <?
+		}
+	}
+?> 
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+</BODY> 
+</HTML>

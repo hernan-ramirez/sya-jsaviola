@@ -1,0 +1,361 @@
+<?
+include "include/db_connect.inc"
+?>
+<HTML>
+<HEAD>
+<TITLE>// Jsaviola.com</TITLE>
+<META NAME="autor" CONTENT="Esteban Raffo Quintana, Hernan Pablo Principe, Hernan Javier Ramirez">
+<META NAME="keywords" CONTENT="Saviola, futbol, river">
+</HEAD> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function openwin(theURL,winName,features) {
+  window.open(theURL,winName,features);
+} 
+//-->
+</SCRIPT>
+<BODY BGCOLOR=#999999 LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+var InternetExplorer = navigator.appName.indexOf("Microsoft") != -1;
+// Handle all the the FSCommand messages in a Flash movie
+function derecha_DoFSCommand(command, args) {
+  var derechaObj = InternetExplorer ? derecha : document.derecha;
+  //
+  // Place your code here...
+  //
+}
+// Hook for Internet Explorer 
+if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && 
+	  navigator.userAgent.indexOf("Windows") != -1 && navigator.userAgent.indexOf("Windows 3.1") == -1) {
+	document.write('<SCRIPT LANGUAGE=VBScript\> \n');
+	document.write('on error resume next \n');
+	document.write('Sub derecha_FSCommand(ByVal command, ByVal args)\n');
+	document.write('  call derecha_DoFSCommand(command, args)\n');
+	document.write('end sub\n');
+	document.write('</SCRIPT\> \n');
+}
+//-->
+</SCRIPT>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR> 
+      <TD WIDTH="762"> 
+        <TABLE WIDTH="762" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+          <TR> 
+            <TD WIDTH="405"> 
+              <TABLE WIDTH="405" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                <TR> 
+                  <TD> 
+                    <TABLE WIDTH="405" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                      <TR BGCOLOR="#666666"> 
+                        <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="10"></TD>
+                      </TR>
+                    </TABLE>
+                    <TABLE WIDTH="405" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                      <TR> 
+                        <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+                      </TR>
+                    </TABLE>
+                    <TABLE WIDTH="405" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                      <TR BGCOLOR="#666666"> 
+                        <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+                      </TR>
+                    </TABLE>
+                  </TD>
+                </TR>
+              </TABLE>
+              
+            <TABLE WIDTH="405" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+              <TR> 
+                  <TD WIDTH="160"><IMG SRC="img/general/jasviola.gif" WIDTH="160" HEIGHT="44"></TD>
+                  
+                <TD ALIGN="CENTER"><A HREF="javascript:openwin('otros/creditos.html','credios','width=305,height=170,scrollbars=0')"><IMG SRC="img/general/spacer.gif" WIDTH="5" HEIGHT="5" BORDER="0"></A></TD>
+                </TR>
+                <TR> 
+                  
+                <TD WIDTH="160"><OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ CODEBASE="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0"
+ ID=menu_personal WIDTH=160 HEIGHT=242>
+                    <PARAM NAME=movie VALUE="flash/menu_personal.swf">
+                      <PARAM NAME=menu VALUE=false>
+                      <PARAM NAME=quality VALUE=high>
+                      <PARAM NAME=wmode VALUE=transparent>
+                      <PARAM NAME=bgcolor VALUE=#999999>
+                      <EMBED SRC="flash/menu_personal.swf" MENU=false QUALITY=high WMODE=transparent BGCOLOR=#999999  WIDTH=160 HEIGHT=242 TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                      </EMBED> 
+                    </OBJECT></TD>
+                  <TD><IMG SRC="img/general/img_player.gif" WIDTH="245" HEIGHT="242"></TD>
+                </TR>
+              </TABLE>
+            </TD>
+            <TD WIDTH="24" BACKGROUND="img/general/separador.gif">&nbsp;</TD>
+            <TD WIDTH="334" VALIGN="bottom"> 
+              <TABLE WIDTH="334" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="265">
+                <TR> 
+                  <TD WIDTH="322" BGCOLOR="#96BE81" VALIGN="top"> 
+                    <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="43">
+                      <TR> 
+                        
+                      <TD WIDTH="75" ALIGN="right"><IMG SRC="img/banners/fila.gif" WIDTH="69" HEIGHT="33"></TD>
+                      <TD WIDTH="247" ALIGN="center" VALIGN="middle"><IMG SRC="img/banners/filasho.gif" WIDTH="233" HEIGHT="33" BORDER="0"></TD>
+                      </TR>
+                    </TABLE>
+                    <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                      <TR> 
+                        
+                      <TD><IMG WIDTH="322" HEIGHT="3" SRC="img/general/title_1.gif"></TD>
+                      </TR>
+                    </TABLE>
+                    <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="195">
+                      <TR VALIGN="top"> 
+                        <TD> 
+                          <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="140">
+                            <TR> 
+                              
+                            <TD><!-- URL's used in the movie--> <A HREF=javascript:openwin('comunidad/e_card.html?card=firma','ecard','width=419,height=340,scrollbars=1')></A> 
+                              <A HREF=javascript:openwin('comunidad/registrate.html','registrate','width=425,height=350,scrollbars=1')></A> 
+                              <A HREF=javascript:openwin('comunidad/e_card.html?card=felicidades','ecard','width=419,height=340,scrollbars=1')></A> 
+                              <A HREF=javascript:openwin('comunidad/e_card.html?card=festejemos','ecard','width=419,height=340,scrollbars=1')></A> 
+                              <A HREF=javascript:openwin('comunidad/e_card.html?card=otroidolo','ecard','width=419,height=340,scrollbars=1')></A> 
+                              <A HREF=javascript:openwin('comunidad/e_card.html?card=paravos','ecard','width=417,height=358,scrollbars=1')></A> 
+                              <!-- text used in the movie--> <!--MoTIvo E-caRDs Selecciona un  tema para tu    E-Card deseale Felicidades a quien vos quieras festeja este triunfo de un idolo      a otro para alguien muy especial --><OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ CODEBASE="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0"
+ ID=derecha WIDTH=322 HEIGHT=140>
+                                <PARAM NAME=movie VALUE="flash/derecha.swf">
+                                <PARAM NAME=menu VALUE=false>
+                                <PARAM NAME=quality VALUE=high>
+                                <PARAM NAME=wmode VALUE=transparent>
+                                <PARAM NAME=bgcolor VALUE=#96BE81>
+                                <EMBED SRC="flash/derecha.swf" MENU=false QUALITY=high WMODE=transparent BGCOLOR=#96BE81  WIDTH=322 HEIGHT=140	SWLIVECONNECT=true NAME=derecha TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                                </EMBED> 
+                              </OBJECT> </TD>
+                            </TR>
+                          </TABLE>
+                          <IMG SRC="img/general/foros_chat.gif" WIDTH="322" HEIGHT="56"></TD>
+                      </TR>
+                    </TABLE>
+                    <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                      <TR BGCOLOR="#FFFFFF"> 
+                        <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                      </TR>
+                    </TABLE>
+                    <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+						
+                    <TR BGCOLOR="#406440" ALIGN="right"> 
+                      <TD>
+                        <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                          <TR>
+                            <TD WIDTH="75"><A HREF="periodistica/index.html?inc=mas&tipo=noticia"><IMG SRC="img/general/noticias.gif" WIDTH="75" HEIGHT="15" BORDER="0"></A></TD>
+                            <TD WIDTH="247"><APPLET CODEBASE="./aplets/inicio/" CODE="aTicker.class" ARCHIVE="aTicker.jar" WIDTH=247 HEIGHT=15 MAYSCRIPT>
+                                <PARAM NAME="_file" VALUE="./mess.txt">
+                                <PARAM NAME="file" VALUE="s">
+                                <PARAM NAME="cSep" VALUE=";">
+                                <PARAM NAME="speed" VALUE="2">
+                                <PARAM NAME="delay" VALUE="30">
+                                <PARAM NAME="local" VALUE="true">
+                                <PARAM NAME="bgcolor" VALUE="4219968">
+                                <PARAM NAME="Font1" VALUE="Verdana, 10, 0, 16777215">
+                                <PARAM NAME="Font2" VALUE="Verdana, 10, 2, 16777215">
+<?
+$result = mysql_query("SELECT * FROM noticia where tipo_contenido='Noticia' and nivel='Principal' Limit 1");
+	if ($result !=0){
+		$x=0;
+		while($row = mysql_fetch_object($result)){
+?> 
+                                <PARAM NAME="s<? echo $x ?>" VALUE="<? echo $row->titulo ?> ; ../../periodistica/index.html?id=<? echo $row->id ?>&inc=nota&tipo=noticia ; _self">
+                                <?
+			$x++;
+		}
+	}
+?>
+<?
+$result = mysql_query("SELECT * FROM noticia where tipo_contenido='Noticia' and nivel='Secundaria' Limit 1");
+	if ($result !=0){
+		while($row = mysql_fetch_object($result)){
+?> 
+                                <PARAM NAME="s<? echo $x ?>" VALUE="<? echo $row->titulo ?> ; ../../periodistica/index.html?id=<? echo $row->id ?>&inc=nota&tipo=noticia ; _self">
+                                <?
+			$x++;
+		}
+	}
+?>
+<?
+$result = mysql_query("SELECT * FROM noticia where tipo_contenido='Noticia' and nivel='General' ORDER BY fecha_creacion DESC Limit 3");
+	if ($result !=0){
+		while($row = mysql_fetch_object($result)){
+?> 
+                                <PARAM NAME="s<? echo $x ?>" VALUE="<? echo $row->titulo ?> ; ../../periodistica/index.html?id=<? echo $row->id ?>&inc=nota&tipo=noticia ; _self">
+                                <?
+			$x++;
+		}
+	}
+?> 
+                              </APPLET></TD>
+                          </TR>
+                        </TABLE>
+                      </TD>
+                        </TR>
+                    </TABLE>
+                    <TABLE WIDTH="322" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                      <TR BGCOLOR="#FFFFFF"> 
+                        <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                      </TR>
+                    </TABLE>
+                  </TD>
+                  <TD WIDTH="1" BGCOLOR="#FFFFFF"><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                  <TD WIDTH="11">&nbsp;</TD>
+                </TR>
+              </TABLE>
+              <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                <TR BGCOLOR="#686868"> 
+                  <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+                </TR>
+              </TABLE>
+              <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                <TR> 
+                  <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                </TR>
+              </TABLE>
+              <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                <TR BGCOLOR="#686868"> 
+                  <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+                </TR>
+              </TABLE>
+              <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                <TR> 
+                  <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                </TR>
+              </TABLE>
+              <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#686868" HEIGHT="30">
+                <TR VALIGN="bottom"> 
+                  
+                <TD WIDTH="334"><IMG SRC="img/general/menu_down.gif" WIDTH="323" HEIGHT="29" VSPACE="0" HSPACE="0" USEMAP="#Map" BORDER="0"><MAP NAME="Map"><AREA SHAPE="RECT" COORDS="32,2,87,11" HREF="comunidad/sorteos.html"><AREA SHAPE="RECT" COORDS="31,14,86,24" HREF="periodistica/index.html?inc=../include/buscar"><AREA SHAPE="RECT" COORDS="170,2,313,12" HREF="javascript:openwin('comunidad/recomienda.html','recomienda','width=430,height=250,scrollbars=0')"></MAP></TD>
+                </TR>
+              </TABLE>
+            </TD>
+          </TR>
+        </TABLE>
+      </TD>
+      <TD VALIGN="bottom"> 
+        <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+          <TR BGCOLOR="#686868"> 
+            <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+          </TR>
+        </TABLE>
+        <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+          <TR> 
+            <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+          </TR>
+        </TABLE>
+        <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+          <TR BGCOLOR="#686868"> 
+            <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+          </TR>
+        </TABLE>
+        <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+          <TR> 
+            <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+          </TR>
+        </TABLE>
+        <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#686868" HEIGHT="30">
+          <TR> 
+            <TD WIDTH="334">&nbsp; </TD>
+          </TR>
+        </TABLE>
+      </TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR BGCOLOR="#686868"> 
+      
+    <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="7"></TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR BGCOLOR="#FFFFFF"> 
+      <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#000000" HEIGHT="100">
+    <TR> 
+      <TD> 
+        <TABLE WIDTH="760" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="100">
+          <TR> 
+<?
+	$not = mysql_query("SELECT * FROM noticia WHERE tipo_contenido='Columna' and nivel='Principal' ");  
+   	$noticia = mysql_fetch_array($not);
+?> 
+            
+          <TD ALIGN="left" WIDTH="404"> 
+            <P><IMG SRC="img/general/columna.jpg" WIDTH="75" HEIGHT="40" ALIGN="left"><FONT FACE="Verdana, Arial, Helvetica, sans-serif" SIZE="1"><FONT COLOR="#FF9900"><B>Mi 
+              Opini&oacute;n:</B> </FONT><FONT COLOR="#FFFFFF" FACE="Arial, Helvetica, sans-serif"><B><? echo $noticia[titulo] ?>&nbsp;</B><BR>
+              <? 
+ 		$num = 0;
+		$words = explode ( " ", $noticia[texto]); 
+		while ( list(, $word) = each ($words) ) {
+		  $num = strlen($word) + $num ;
+		  if ($num < 250) {
+		    echo "$word ";
+		  } else {
+		    break;
+		  } 
+		} 
+	?></FONT><A HREF="periodistica/index.html?id=<? echo $noticia[id] ?>&inc=nota&tipo=columna"><FONT COLOR="#FF9900" FACE="Verdana, Arial, Helvetica, sans-serif"><B>(Ver 
+              ...)</B></FONT></A></FONT></P>
+            </TD>
+            <TD WIDTH="356"><OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" CODEBASE="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#3,0,0,0" WIDTH="356" HEIGHT="100">
+                <PARAM NAME="SRC" VALUE="flash/downsloads.swf">
+                <EMBED SRC="flash/downsloads.swf" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/" TYPE="application/x-shockwave-flash" WIDTH="356" HEIGHT="100">
+                </EMBED> 
+              </OBJECT></TD>
+          </TR>
+        </TABLE>
+      </TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR BGCOLOR="#686868"> 
+      
+    <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="6"></TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR BGCOLOR="black"> 
+      <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    </TR>
+  </TABLE>
+  
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#98C088"> 
+    <TD>
+      <TABLE WIDTH="740" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+        <TR ALIGN="right"> 
+          <TD><IMG SRC="img/general/der_cont.gif" WIDTH="173" HEIGHT="16" HSPACE="0" BORDER="0" USEMAP="#Map2"><MAP NAME="Map2"><AREA SHAPE="RECT" COORDS="89,1,175,20" HREF="javascript:openwin('otros/contactenos.html','contactenos','width=350,height=275,sacrollbars=0')"></MAP></TD>
+        </TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR BGCOLOR="black"> 
+      <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR BGCOLOR="#CCCCCC"> 
+      <TD> <IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="5"></TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR BGCOLOR="black"> 
+      <TD><IMG SRC="img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    </TR>
+  </TABLE>
+  <TABLE WIDTH="762" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+    <TR ALIGN="right"> 
+      
+    <TD><A HREF="http://argentina.sportsya.com" TARGET="_blank"><IMG SRC="img/general/s_ya.gif" WIDTH="191" HEIGHT="30" BORDER="0" VSPACE="3"></A>&nbsp;&nbsp;&nbsp;</TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,196 @@
+<? 
+
+	$sq="SELECT * FROM ".$tipo." WHERE id=".$id;
+	$not = mysql_query($sq);  
+   	$noticia = mysql_fetch_array($not);
+
+if ($formato==0){
+
+$dochtml.='
+<HTML>
+<HEAD>
+<TITLE>Jsaviola.com</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#999999">
+<TABLE WIDTH="480" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#FFFFFF"> 
+    <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="480" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="18">
+  <TR> 
+    <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    <TD WIDTH="478" ALIGN="right"><FONT FACE="Verdana, Arial, Helvetica, sans-serif" COLOR="#FFFFFF"><B>
+'. $noticia[titulo].' &nbsp;&nbsp;</B></FONT></TD>
+    <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="480" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#FFFFFF"> 
+    <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="480" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR> 
+    <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    <TD WIDTH="478" BGCOLOR="#000000">&nbsp;</TD>
+    <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="480" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#FFFFFF"> 
+    <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="480" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="20">
+  <TR> 
+    <TD WIDTH="121" VALIGN="top"> 
+      <TABLE WIDTH="121" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+        <TR> 
+          <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+          <TD> 
+            <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+              <TR BGCOLOR="#666666"> 
+                <TD>&nbsp;</TD>
+              </TR>
+              <TR BGCOLOR="#FFFFFF"> 
+                <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1" HSPACE="1"></TD>
+              </TR>
+              <TR BGCOLOR="#000000"><TD HEIGHT="80"><IMG SRC="http://jsaviola.com/site/img/clipart/';
+
+ $imas=mysql_query("SELECT nombre_arch, ancho, alto FROM fotos WHERE id='$noticia[id_foto1]'");
+	$imasa=mysql_fetch_array($imas); 
+     if ($imasa[0]==""){$dochtml.='default/01.jpg';}else{$dochtml.=$imasa[0]; } 
+
+$dochtml.='" WIDTH="120" HEIGHT="80"></TD>
+              </TR>
+              <TR BGCOLOR="#666666"> 
+                <TD HEIGHT="1" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+              </TR>
+              <TR BGCOLOR="#000000"><TD HEIGHT="80"><IMG SRC="http://jsaviola.com/site/img/clipart/';
+
+ $imas=mysql_query("SELECT nombre_arch, ancho, alto FROM fotos WHERE id='$noticia[id_foto2]'");
+	$imasa=mysql_fetch_array($imas); 
+     if ($imasa[0]==""){$dochtml.='default/02.jpg';}else{$dochtml.=$imasa[0]; } 
+
+$dochtml.='" WIDTH="120" HEIGHT="80"></TD>
+              </TR>
+              <TR BGCOLOR="#666666"> 
+                <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+              </TR>
+              <TR BGCOLOR="#000000"><TD HEIGHT="80"><IMG SRC="http://jsaviola.com/site/img/clipart/';
+
+ $imas=mysql_query("SELECT nombre_arch, ancho, alto FROM fotos WHERE id='$noticia[id_foto2]'");
+	$imasa=mysql_fetch_array($imas); 
+     if ($imasa[0]==""){$dochtml.='default/03.jpg';}else{$dochtml.=$imasa[0]; } 
+
+$dochtml.='" WIDTH="120" HEIGHT="80"></TD>
+              </TR>
+              <TR BGCOLOR="#FFFFFF"> 
+                <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+              </TR>
+            </TABLE>
+            <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0" DWCOPYTYPE="CopyTableRow">
+                          <TR> 
+                            <TD HEIGHT="30">&nbsp;</TD>
+                          </TR>
+                          <TR BGCOLOR="#FFFFFF"> 
+                            <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                          </TR>
+                          <TR> 
+                            <TD>
+                              <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TR>
+                                  <TD WIDTH="24" BGCOLOR="#6D99A7" ALIGN="center"><IMG SRC="http://jsaviola.com/site/img/general/noticias/news_icon.gif" WIDTH="21" HEIGHT="25"></TD>
+                                  <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                  
+                      
+          <TD WIDTH="95" BGCOLOR="#6D99A7">&nbsp;<A HREF="http://jsaviola.com/" TARGET="_blank"><FONT FACE="MS Sans Serif" SIZE="1" COLOR="#000000" style="text-decoration: none">&gt; 
+            Jsaviola</FONT></A> </TD>
+                                </TR>
+                              </TABLE>
+                              <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TR BGCOLOR="#FFFFFF"> 
+                                  <TD HEIGHT="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                </TR>
+                              </TABLE>
+                              <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TR> 
+                                  <TD WIDTH="24" BGCOLOR="#6D99A7"><IMG SRC="http://jsaviola.com/site/img/general/noticias/print_icon.gif" WIDTH="24" HEIGHT="24" VSPACE="1"></TD>
+                                  <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                  
+          <TD WIDTH="95" BGCOLOR="#6D99A7">&nbsp;<A HREF="http://jsaviola.com/site/';
+if ($tipo=="noticia"){
+$dochtml.='periodistica/index.html?id='.$noticia[id].'&inc=nota&tipo='. $tipo;
+}else{
+$dochtml.='comunidad/sorteos.html';
+}
+$dochtml.='" TARGET="_blank"><FONT FACE="MS Sans Serif" SIZE="1" COLOR="#000000" style="text-decoration: none">&gt; 
+            ver en sitio</FONT></A> </TD>
+                                </TR>
+                              </TABLE>
+                              <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TR BGCOLOR="#FFFFFF"> 
+                                  <TD HEIGHT="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                </TR>
+                              </TABLE>
+                              <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TR> 
+                                  <TD WIDTH="24" BGCOLOR="#6D99A7"><IMG SRC="http://jsaviola.com/site/img/general/noticias/recomienda_ico.gif" WIDTH="24" HEIGHT="19" VSPACE="2"></TD>
+                                  <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                  
+          <TD WIDTH="95" BGCOLOR="#6D99A7">&nbsp;<A HREF="http://jsaviola.com/site/';
+if ($tipo=="noticia"){
+$dochtml.='periodistica/index.html?inc=mas&tipo='. $tipo;
+}else{
+$dochtml.='comunidad/sorteos.html';
+}
+$dochtml.='" TARGET="_blank"><FONT FACE="MS Sans Serif" SIZE="1" COLOR="#000000" style="text-decoration: none">&gt; 
+            m&aacute;s ';
+if ($tipo=="noticia"){
+$dochtml.='noticias';
+}else{
+$dochtml.='sorteos';
+}
+$dochtml.='</FONT></A> </TD>
+                                </TR>
+                              </TABLE>
+                            </TD>
+                          </TR>
+  <TR BGCOLOR="#FFFFFF"> 
+    <TD><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+
+                        </TABLE></TD>
+        </TR>
+      </TABLE>
+    </TD>
+    <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    <TD WIDTH="357" VALIGN="top"> 
+      <TABLE WIDTH="100%" BORDER="0" CELLSPACING="2" CELLPADDING="2">
+        <TR> 
+          <TD> 
+            <P><FONT FACE="MS Sans Serif" SIZE="1" COLOR="#FFFFFF">'. $noticia[texto] .'</FONT></P>
+          </TD>
+        </TR>
+      </TABLE>
+      <IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    <TD BGCOLOR="#FFFFFF" WIDTH="1" BACKGROUND="http://jsaviola.com/site/img/general/title_1.gif"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="480" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="1">
+  <TR> 
+    <TD WIDTH="120"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+    <TD BGCOLOR="#FFFFFF" WIDTH="358"><IMG SRC="http://jsaviola.com/site/img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>
+ '; 
+}else{
+	$tit.=ltrim(html2text($noticia[titulo]));
+	$text.=ltrim(html2text($noticia[texto]));
+	$dochtml="$tit\n\n $text";
+}
+?>

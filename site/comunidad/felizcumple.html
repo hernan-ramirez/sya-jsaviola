@@ -1,0 +1,322 @@
+<?
+include "../include/db_connect.inc"
+?>
+<HTML>
+<HEAD>
+<TITLE>Feliz Cumpleaños Conejo!!!</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" HREF="../include/estilos.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function openwin(theURL,winName,features) {
+  window.open(theURL,winName,features);
+} 
+//--->
+</SCRIPT>
+</HEAD>
+
+<BODY LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BACKGROUND="../img/general/concurso/back_header.jpg" HEIGHT="33" BGCOLOR="#FFFFFF">
+  <TR> 
+    <TD>
+      <TABLE WIDTH="610" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="33" BACKGROUND="../img/general/concurso/back_header_green.gif">
+        <TR> 
+          <TD WIDTH="27">&nbsp;</TD>
+          <TD WIDTH="570" VALIGN="top"><IMG SRC="../img/general/concurso/jsaviola.gif" WIDTH="117" HEIGHT="31"></TD>
+          <TD WIDTH="13"><IMG SRC="../img/general/concurso/end_back_header_green.gif" WIDTH="13" HEIGHT="33"></TD>
+        </TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#000000">
+  <TR>
+    <TD>&nbsp;</TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#000000">
+  <TR> 
+    <TD>
+      <TABLE WIDTH="740" BORDER="0" CELLSPACING="0" CELLPADDING="0" VSPACE="0" HSPACE="0">
+        <TR> 
+          <TD WIDTH="13">&nbsp;</TD>
+          <TD WIDTH="727" BGCOLOR="#90BF80"> 
+            <TABLE WIDTH="727" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="11" BACKGROUND="../img/general/concurso/back_second_line.gif">
+              <TR> 
+                <TD WIDTH="12"><IMG SRC="../img/general/concurso/corner_second_line.gif" WIDTH="12" HEIGHT="11"></TD>
+                <TD WIDTH="480"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="11"></TD>
+                <TD BGCOLOR="#FFFFFF" WIDTH="1" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="11"></TD>
+                <TD WIDTH="223"><IMG SRC="../img/general/concurso/gray_second_line.gif" WIDTH="223" HEIGHT="11"></TD>
+                <TD WIDTH="10"><IMG SRC="../img/general/concurso/corner2_second_line.gif" WIDTH="11" HEIGHT="11"></TD>
+              </TR>
+            </TABLE>
+            <TABLE WIDTH="727" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+              <TR> 
+                <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                <TD WIDTH="725"> 
+                  <TABLE WIDTH="725" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                    <TR> 
+                      <TD WIDTH="17">&nbsp;</TD>
+                      <TD WIDTH="11"><IMG SRC="../img/general/concurso/corner_3_line.gif" WIDTH="11" HEIGHT="33"></TD>
+                      <TD BACKGROUND="../img/general/concurso/back_3_line.gif" WIDTH="441" VALIGN="bottom" ALIGN="right"><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#FFFFFF">Tu 
+                        saludo de Cumplea&ntilde;os</FONT></TD>
+                      <TD WIDTH="22"><IMG SRC="../img/general/concurso/corner2_3_line.gif" WIDTH="22" HEIGHT="33"></TD>
+                      <TD BGCOLOR="#FFFFFF" WIDTH="1" HEIGHT="1" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                      <TD WIDTH="233"><A HREF="http://argentina.sportsya.com/" TARGET="_blank"><IMG SRC="../img/banners/el_sitio_oficial.gif" WIDTH="233" HEIGHT="33" BORDER="0"></A></TD>
+                    </TR>
+                  </TABLE>
+                  <TABLE WIDTH="725" BORDER="0" CELLSPACING="0" CELLPADDING="0" HEIGHT="13">
+                    <TR> 
+                      <TD WIDTH="18"><IMG SRC="../img/general/concurso/line_4_corner.gif" WIDTH="18" HEIGHT="13"></TD>
+                      <TD WIDTH="461"><IMG SRC="../img/general/concurso/line_4_back.gif" WIDTH="461" HEIGHT="13"></TD>
+                      <TD WIDTH="12"><IMG SRC="../img/general/concurso/line_4_corner2.gif" WIDTH="12" HEIGHT="13"></TD>
+                      <TD WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                      <TD WIDTH="234" BACKGROUND="../img/general/concurso/line_4_back_pub.gif"><IMG SRC="../img/general/concurso/line_4_corner_back_pub.gif" WIDTH="9" HEIGHT="13"></TD>
+                    </TR>
+                  </TABLE>
+                  <TABLE WIDTH="725" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                    <TR> 
+                      <TD WIDTH="17">&nbsp;</TD>
+                      <TD BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                      <TD WIDTH="461"> <?
+	$result = mysql_query("SELECT * FROM sorteos WHERE activo='si'");  
+	if($result!=0){
+		while($row=mysql_fetch_object($result)){
+?> 
+                        <TABLE WIDTH="461" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#B0ACB0">
+                          <TR> 
+                            <TD WIDTH="120" VALIGN="top"> 
+                              <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TR> 
+                                  <TD> <IMG SRC="../img/clipart/saviola_cumple.jpg" WIDTH="120" HEIGHT="100"></TD>
+                                </TR>
+                                <TR BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif"> 
+                                  <TD><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                </TR>
+                                <TR> 
+                                  <TD> 
+                                    <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                      <TR> 
+                                        <TD WIDTH="24" BGCOLOR="#6D99A7"><IMG SRC="../img/general/noticias/print_icon.gif" WIDTH="24" HEIGHT="24" VSPACE="1"></TD>
+                                        <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                        <TD WIDTH="95" BGCOLOR="#6D99A7">&nbsp;<FONT COLOR="#FFFFFF"><A HREF="javascript:openwin('../include/print.html?id=<? echo $row->id  ?>&tipo=sorteos','print','width=335,height=350,scrollbars=1')">&gt; 
+                                          imprimir</A></FONT></TD>
+                                      </TR>
+                                    </TABLE>
+                                  </TD>
+                                </TR>
+                                <TR BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif"> 
+                                  <TD><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                </TR>
+                                <TR> 
+                                  <TD> 
+                                    <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                      <TR> 
+                                        <TD WIDTH="24" BGCOLOR="#6D99A7"><IMG SRC="../img/general/noticias/recomienda_ico.gif" WIDTH="24" HEIGHT="19" VSPACE="2"></TD>
+                                        <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                        <TD WIDTH="95" BGCOLOR="#6D99A7">&nbsp;<A HREF="javascript:openwin('../include/enviar.html?id=<? echo $row->id  ?>&tipo=sorteos','enviar','width=400,height=220,scrollbars=0')">&gt; 
+                                          enviar</A></TD>
+                                      </TR>
+                                    </TABLE>
+                                  </TD>
+                                </TR>
+                                <TR BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif"> 
+                                  <TD><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                </TR>
+                              </TABLE>
+                              <BR>
+                            </TD>
+                            <TD BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                            <TD WIDTH="340" VALIGN="top"> 
+                              <TABLE WIDTH="340" BORDER="0" CELLSPACING="2" CELLPADDING="2">
+                                <TR> 
+                                  <TD> 
+                                    <P ALIGN="CENTER"><B>&iexcl;Felicit&aacute; 
+                                      a Javier en su d&iacute;a!</B></P>
+                                    <P ALIGN="CENTER">A trav&eacute;s de Jsaviola.com 
+                                      pod&eacute;s saludar al conejo en el d&iacute;a 
+                                      de su cumple&ntilde;os. &iexcl;Aprovech&aacute; 
+                                      y festej&aacute; con &eacute;l!</P>
+                                    <P>&nbsp;</P>
+                                  </TD>
+                                </TR>
+                              </TABLE>
+                                <FORM NAME="form" ACTION="<?  echo $PHP_SELF ?>" ENCTYPE="multipart/form-data" METHOD="post">
+                                  
+                                <TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="1">
+                                  <TR> 
+                                    <TD ALIGN="CENTER" WIDTH="50%">Usuario</TD>
+                                    <TD ALIGN="CENTER" WIDTH="50%">Contrase&ntilde;a 
+                                      <INPUT TYPE="hidden" NAME="sorteo" VALUE="<? echo $row->id ?>">
+                                    </TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD ALIGN="CENTER" WIDTH="50%"> 
+                                      <INPUT TYPE="text" NAME="usuario" VALUE="" SIZE="10">
+                                    </TD>
+                                    <TD ALIGN="CENTER" WIDTH="50%"> 
+                                      <INPUT TYPE="PASSWORD" NAME="contrasena" VALUE="" SIZE="10">
+                                    </TD>
+                                  </TR>
+                                </TABLE>
+                              <TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="1">
+                                  <TR ALIGN="CENTER"> 
+                                    <TD> 
+                                      <TEXTAREA NAME="texto" ROWS="5" STYLE="width:250">Escribile tu mensaje aquí
+</TEXTAREA>
+                                      <BR>
+                                      <INPUT TYPE="submit" NAME="enviar" VALUE="Enviar">
+                                    </TD>
+                                </TR>
+                              </TABLE></FORM>
+                              <?
+if ($enviar){
+if ($row->id==$sorteo){ 
+if ($usuario=="" || $contrasena==""){
+	$mensaje="Complete todos los campos";
+
+}else{
+		$exis=mysql_query("SELECT * FROM registrate WHERE usuario='$usuario' and contrasena='$contrasena'");
+		$exist=mysql_fetch_array($exis);
+		$existe=mysql_num_rows($exis);
+		if ($existe==0){
+			$mensaje="Usted no esta registrado o ingreso mal su usuario o contraseña";
+			}else{
+			
+					$fecha_creacion = date ("Y-m-d"); 
+					mysql_query("INSERT INTO felizcumple(fecha_creacion, id_registrado) ". "VALUES ('$fecha_creacion', '$exist[id]')");
+
+mail("jsaviola1@sportsya.com", "Feliz Cumpleaños!!!", "$exist[nombre] $exist[apellido]: $texto","From: $exist[email] \n");
+
+					$mensaje="Gracias por tu mensaje";
+
+			}
+//cierre del query principal;
+		}
+
+?> <BR>
+                              <BR>
+                              <TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="1">
+                                <TR ALIGN="CENTER"> 
+                                  <TD><FONT COLOR="#333333"><? echo $mensaje ?></FONT></TD>
+                                </TR>
+                              </TABLE>
+                              <?	
+	}
+}
+
+?> <BR>
+                              <BR>
+                            </TD>
+                          </TR>
+                          <TR> 
+                            <TD WIDTH="120" VALIGN="top" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                            <TD BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                            <TD WIDTH="340" VALIGN="top" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                          </TR>
+                        </TABLE>
+                        <?
+//cierre del query principal;
+	}
+}
+?> </TD>
+                      <TD BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                      <TD WIDTH="12">&nbsp;</TD>
+                      <TD WIDTH="233" VALIGN="top"> <BR>
+                        <TABLE WIDTH="220" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                          <TR> 
+                            <TD> 
+                              <TABLE WIDTH="220" BORDER="0" CELLSPACING="0" CELLPADDING="0" BACKGROUND="../img/general/concurso/destacado_up.gif">
+                                <TR> 
+                                  <TD WIDTH="11"><IMG SRC="../img/general/concurso/destacado_up_left.gif" WIDTH="11" HEIGHT="23"></TD>
+                                  <TD WIDTH="198" ALIGN="right">Usuarios no registrados</TD>
+                                  <TD WIDTH="11"><IMG SRC="../img/general/concurso/destacado_up_right.gif" WIDTH="11" HEIGHT="23"></TD>
+                                </TR>
+                              </TABLE>
+                            </TD>
+                          </TR>
+                          <TR> 
+                            <TD> 
+                              <TABLE WIDTH="220" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TR> 
+                                  <TD BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                  <TD WIDTH="218"> 
+                                    <TABLE WIDTH="100%" BORDER="0" CELLSPACING="3" CELLPADDING="3">
+                                      <TR> 
+                                        <TD>Para poder enviar un mensaje de cumplea&ntilde;os 
+                                          para Javier deber&aacute;s ser un usuario 
+                                          registrado, si a&uacute;n no lo eres 
+                                          debes registrarte <A HREF="javascript:openwin('registrate.html','registrate','width=425,height=350,scrollbars=1')"><FONT COLOR="#FF9900"><B><FONT COLOR="#006666">aqu&iacute;</FONT></B></FONT></A>. 
+                                          Si ya te encuentras registrado, ingresa 
+                                          tus datos y enviale tu saludo!</TD>
+                                      </TR>
+                                    </TABLE>
+                                  </TD>
+                                  <TD WIDTH="1" BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                </TR>
+                              </TABLE>
+                            </TD>
+                          </TR>
+                          <TR> 
+                            <TD><IMG SRC="../img/general/concurso/destacado_down.gif" WIDTH="220" HEIGHT="12"></TD>
+                          </TR>
+                        </TABLE>
+                      </TD>
+                    </TR>
+                  </TABLE>
+                  <TABLE WIDTH="725" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                    <TR> 
+                      <TD WIDTH="17">&nbsp;</TD>
+                      <TD WIDTH="463" VALIGN="top"> 
+                        <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="463">
+                          <TR> 
+                            <TD> 
+                              <TABLE WIDTH="120" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+                                <TD BGCOLOR="#FFFFFF" WIDTH="1" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                <TD ALIGN="center" BGCOLOR="#006633" BACKGROUND="../img/general/verde.jpg" WIDTH="58"><A HREF="../inicio.html"><FONT COLOR="#FFFFFF">&gt; 
+                                  home</FONT></A></TD>
+                                <TD BGCOLOR="#FFFFFF" WIDTH="1" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                <TD ALIGN="center" BGCOLOR="#006600" BACKGROUND="../img/general/verde.jpg" WIDTH="58"><A HREF="../periodistica/index.html?inc=../include/buscar"><FONT COLOR="#FFFFFF">&gt;&gt; 
+                                  buscar</FONT></A></TD>
+                                </TR>
+                                <TR> 
+                                  <TD COLSPAN="4" BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                                </TR>
+                              </TABLE>
+                            </TD>
+                            <TD BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                            <TD ALIGN="RIGHT" BGCOLOR="#B0ACB0"><IMG SRC="../img/general/title_1.gif" WIDTH="1" HEIGHT="15"></TD>
+                          </TR>
+                          <TR> 
+                            <TD><IMG SRC="../img/general/concurso/line_5_left.gif" WIDTH="11" HEIGHT="12"><IMG SRC="../img/general/concurso/line_5.gif" WIDTH="110" HEIGHT="12"></TD>
+                            <TD BACKGROUND="../img/general/title_1.gif"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+                            <TD><IMG SRC="../img/general/concurso/line_5.gif" WIDTH="330" HEIGHT="12"><IMG SRC="../img/general/concurso/line_5_right.gif" WIDTH="11" HEIGHT="12"></TD>
+                          </TR>
+                        </TABLE>
+                      </TD>
+                      <TD WIDTH="12">&nbsp;</TD>
+                      <TD WIDTH="233">&nbsp;</TD>
+                    </TR>
+                  </TABLE>
+                  <BR>
+                </TD>
+                <TD BGCOLOR="#FFFFFF" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+      </TABLE>
+      <TABLE WIDTH="740" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+        <TR>
+          <TD WIDTH="13"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+          <TD BGCOLOR="#FFFFFF" BACKGROUND="../img/general/title_1.gif" WIDTH="1"><IMG SRC="../img/general/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+          <TD WIDTH="714"><IMG SRC="../img/general/concurso/line6.gif" WIDTH="715" HEIGHT="13" VSPACE="0" BORDER="0"></TD>
+          <TD WIDTH="11"><IMG SRC="../img/general/concurso/line6_corner.gif" WIDTH="11" HEIGHT="13" VSPACE="0" HSPACE="0" BORDER="0"></TD>
+        </TR>
+      </TABLE>
+      <P>&nbsp;</P>
+    </TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

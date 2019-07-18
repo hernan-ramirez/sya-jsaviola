@@ -1,0 +1,125 @@
+<?
+include "include/db_connect.inc";
+?>
+<HTML>
+<LINK REL="stylesheet" HREF="include/admin_style.css"><META NAME="autor" CONTENT="Esteban Raffo Quintana, Hernan Pablo Principe, Hernan Javier Ramirez">
+<BODY>
+<?
+$nom = mysql_query("SELECT * FROM felizcumple");
+$nombre=mysql_fetch_array($nom);
+	if (!isset($paso)){ $paso=1; }
+?>
+
+<P>JSAVIOLA.COM -> Usuarios con Mensaje por el Cumplea&ntilde;os</P>
+
+<?
+if ($borrar=="si"){
+?>
+<DIV ID="Layer2" STYLE="position:absolute; left:381px; top:136px; width:223px; height:145px; z-index:2; background-color: #006666; layer-background-color: #006666; border: 1px none #000000"> 
+  <P>&nbsp;</P>
+  <P ALIGN="CENTER">¿Esta seguro que decea eliminar este registro?<BR><BR>
+    <A HREF="<? echo $PHP_SELF ?>?tabla=<? echo $tabla ?>&borrar=aceptar&id=<? echo $id ?>&paso=<? echo $paso ?>"><FONT COLOR="#FF3333">ACEPTAR</FONT></A>&nbsp
+<A HREF="<? echo $PHP_SELF ?>?paso=<? echo $paso ?>"><FONT COLOR="#FF3333">CANCELAR</FONT></A></P>
+  </DIV>
+<?
+}
+if ($borrar=="aceptar"){
+mysql_query("DELETE FROM felizcumple WHERE id = $id");
+}
+	$result = mysql_query("SELECT * FROM felizcumple");  
+	$total=mysql_num_rows($result);
+	
+?> 
+
+<P><FONT COLOR="#FF0000">Total Inscriptos <? echo $total ?></FONT><BR>
+  <?
+
+	$rango=25;
+	$rango_i=($rango*$paso)-$rango;
+ 	$pasos=$total/$rango;
+	$x=1;
+	while ($x<=($pasos+1)){
+?>
+<A HREF="<? echo $PHP_SELF ?>?paso=<? echo $x ?>" <? if ($x==$paso){ echo "style='color:#FF0000'"; } ?>><? echo $x ?>&nbsp;</A>
+<?
+		$x++;
+	}
+?></P>
+<TABLE WIDTH="2000" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR BGCOLOR="#000000"> 
+    <TD>
+      <TABLE BORDER="0" BORDERCOLOR="#000000" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
+        <TR BGCOLOR="#996666"> 
+          <TD ALIGN="CENTER"> <B>ID</B></TD>
+          <TD ALIGN="CENTER"> <B>id Registrado</B></TD>
+          <TD ALIGN="CENTER"> <B>Apellido</B> </TD>
+          <TD ALIGN="CENTER"> <B>Nombre</B> </TD>
+          <TD ALIGN="CENTER"> <B>Fecha Nac.</B> </TD>
+          <TD ALIGN="CENTER"> <B>Usuario</B> </TD>
+          <TD ALIGN="CENTER"> <B>Contraseña</B> </TD>
+          <TD ALIGN="CENTER"> <B>Hincha</B> </TD>
+          <TD ALIGN="CENTER"> <B>Mail</B> </TD>
+          <TD ALIGN="CENTER"> <B>Ocupaci&oacute;n</B> </TD>
+          <TD ALIGN="CENTER"> <B>Telefono</B> </TD>
+          <TD ALIGN="CENTER"> <B>Calle</B> </TD>
+          <TD ALIGN="CENTER"> <B>Loc.</B> </TD>
+          <TD ALIGN="CENTER"> <B>cp </B></TD>
+          <TD ALIGN="CENTER"><B>Pais</B></TD>
+          <TD ALIGN="CENTER"><B>Sexo</B></TD>
+          <TD ALIGN="CENTER"><B>Lugar</B></TD>
+          <TD ALIGN="CENTER"><B>Hor</B></TD>
+          <TD ALIGN="CENTER"><B>n.SYA</B></TD>
+          <TD ALIGN="CENTER"><B>n.JS</B></TD>
+          <TD ALIGN="CENTER"><B>n.terce.</B></TD>
+          <TD ALIGN="CENTER"><B>compras</B></TD>
+          <TD ALIGN="CENTER"><B>credito</B></TD>
+          <TD ALIGN="CENTER"><B>encuesta</B></TD>
+          <TD ALIGN="CENTER"><B>Fecha Suscripcion</B></TD>
+          <TD ALIGN="CENTER"><B>Borrar</B></TD>
+        </TR>
+<?
+	$result2 = mysql_query("SELECT * FROM felizcumple LIMIT $rango_i,$rango");  
+		if ($result2 != 0){ 
+			while ($row2 = mysql_fetch_object($result2)){
+				$result = mysql_query("SELECT * FROM registrate WHERE id=$row2->id_registrado ");
+				$row=mysql_fetch_array($result);  
+?> 
+        <TR BGCOLOR="#FFFFCC"> 
+          <TD ALIGN="CENTER"><? echo $row2->id ?></TD>
+          <TD><? echo $row[id] ?></TD>
+          <TD><? echo $row[apellido] ?></TD>
+          <TD><? echo $row[nombre] ?></TD>
+          <TD><? echo $row[fecha_nacimiento] ?></TD>
+          <TD><? echo $row[usuario] ?></TD>
+          <TD><? echo $row[contrasena] ?></TD>
+          <TD><? echo $row[hincha_de] ?></TD>
+          <TD><A HREF="mailto:<? echo $row->email ?>"><? echo $row[email] ?></A></TD>
+          <TD> <? echo $row[ocupacion] ?></TD>
+          <TD><? echo $row[telefono] ?></TD>
+          <TD><? echo $row[domicilio_calle] ?></TD>
+          <TD><? echo $row[domicilio_localidad] ?></TD>
+          <TD><? echo $row[domicilio_cp] ?></TD>
+          <TD><? echo $row[domicilio_pais] ?></TD>
+          <TD><? echo $row[sexo] ?></TD>
+          <TD><? echo $row[lugar_conexion] ?></TD>
+          <TD><? echo $row[horario_conexion] ?></TD>
+          <TD><? echo $row[noticias_sya] ?></TD>
+          <TD><? echo $row[noticias_jsaviola] ?></TD>
+          <TD><? echo $row[noticias_terceros] ?></TD>
+          <TD><? echo $row[compras] ?></TD>
+          <TD><? echo $row[credito] ?></TD>
+          <TD><? echo $row[encuesta] ?></TD>
+          <TD><? echo $row2->fecha_creacion ?></TD>
+          <TD ALIGN="CENTER"><A HREF="<? echo $PHP_SELF ?>?tabla=<? echo $tabla ?>&borrar=si&id=<? echo $row2->id ?>&paso=<? echo $paso ?>">Borrar</A></TD>
+        </TR>
+<?
+		}
+   }
+?> 
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>
+
+</BODY> 
+</HTML>
